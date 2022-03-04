@@ -20,11 +20,13 @@ export default function OrderForm({changePopUp, order, orderNumber}){
             {/* button controls the tenary operator in case a customer wants to cancel */}
             <button className="close-btn" onClick={() => changePopUp()}>X</button>
             <br></br><br></br>
+            {/* buttons to control tree format to narrow down options */}
             <button onClick={()=>openPork()}>Pork</button>
             <button onClick={()=>openBrats()}>Brats</button>
             <button onClick={()=>openBeef()}>Beef</button>
             <button onClick={()=>openChicken()}>Chicken/Poultry</button>
             <br></br><br></br>
+            {/* tenary operators to display the next set of options */}
             {showPork ? null :
                 <><button>Pork Chops</button><button>Stuffed chops</button></>
             }
@@ -39,6 +41,8 @@ export default function OrderForm({changePopUp, order, orderNumber}){
                 <button>Stuffed Chicken</button><button>Chicken Patties</button></>
             }
             <br></br>
+            {/* submit button would send a server POST request and update the customer counter along and 
+            user will recieve their order number */}
             <button className="submit" onClick={()=>{order(); alert(`Your order number is: ${orderNumber + 1}`); changePopUp()}}>Submit Cart</button>
           </div>
         </div>
