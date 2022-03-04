@@ -13,6 +13,14 @@
   display: block;
   margin: auto;
 }
+h2{
+  text-align: center;
+}
+.submit{
+  position: absolute;
+  right: 21px;
+  bottom: 21px;
+}
 .popup{
   position: fixed;
   top: 0;

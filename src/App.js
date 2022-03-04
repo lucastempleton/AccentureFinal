@@ -8,13 +8,15 @@ function App() {
   let [counter, setCounter] = useState(1);
   // boolean to open/close popup order form
   const [popUp, setPopUp] = useState(true);
+  const changePopUp = () => setPopUp(!popUp)
   // function to reset the counters at the end of the night
   const reset = () => {setCounter(1); setCustomerCounter(0)}
-  const changePopUp = () => setPopUp(!popUp)
+  // functions to increase the value of counters by 1
   function addCounter(){setCounter(++counter)}
   function addCustomerCounter(){setCustomerCounter(++customerCounter)}
+  // If a customer wants to manually order with an employee at the counter
   function grabTicket(){addCustomerCounter(); alert(`Please be at the counter when it is your turn, your number is: ${customerCounter}`)}
-
+  // function to set the time and display to the page
   function clockTick() {
     let currentTime = new Date(),
         hours = currentTime.getHours(),
@@ -39,10 +41,11 @@ function App() {
       <button className="start-order" onClick={()=>grabTicket()}>Grab Ticket</button>
       {/* tenary operator to decide whether or not the form should be open */}
       { popUp ? null :
-
-        <OrderForm changePopUp={changePopUp}/>
+        //react component I created to ease the eyes on clutter
+        <OrderForm changePopUp={changePopUp} order={addCustomerCounter} orderNumber={customerCounter}/>
       }
       <br></br><br></br>
+      <h2>Employee Tools</h2>
       {/* Employees will press this button when an order is complete */}
       <button className="complete-order" onClick={()=>addCounter()}>Order Complete</button>
       {/* Employees can press the reset button at the end of the night or could be automated by time */}
