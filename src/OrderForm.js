@@ -39,7 +39,7 @@ export default function OrderForm({changePopUp, order, orderNumber}){
                 <button>Stuffed Chicken</button><button>Chicken Patties</button></>
             }
             <br></br>
-            <button className="submit">Submit Cart</button>
+            <button className="submit" onClick={()=>{order(); alert(`Your order number is: ${orderNumber + 1}`); changePopUp()}}>Submit Cart</button>
           </div>
         </div>
     )
